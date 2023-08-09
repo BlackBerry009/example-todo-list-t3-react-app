@@ -1,28 +1,36 @@
-# Create T3 App
+use Create t3 app to make a TODO list demo.
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+![TODO LIST](/public/todo.jpg)
+## Quick Start
 
-## What's next? How do I make an app with this?
+here recommend a package manager library: [ni](https://github.com/antfu/ni)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+1. first, make an env file to store the database URL.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+```sh
+echo "DATABASE_URL=file:./dev.db" > env
+```
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+if you wanna use another database, you can change the DATABASE_URL to your own database URL.
 
-## Learn More
+for example MySQL: `mysql://USER:PASSWORD@HOST:PORT/DATABASE`
+more details: [Prisma](https://www.prisma.io/docs/concepts/database-connectors/mysql#configuring-an-ssl-connection)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+2. therefore, we have the schema `/prisma/schema.prisma`, then create the database,
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```sh
+# this will generate some files in /prisma
+nx prisma migrate dev --name init
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+3. if you change the schema info, you must execute the command below to update the database.
 
-## How do I deploy this?
+```sh
+nx prisma generate
+```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+4. now, we can start the server.
+
+```sh
+nr dev
+```
