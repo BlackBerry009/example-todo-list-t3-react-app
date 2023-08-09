@@ -8,10 +8,10 @@ here recommend a package manager library: [ni](https://github.com/antfu/ni)
 1. first, make an env file to store the database URL.
 
 ```sh
-echo "DATABASE_URL=file:./dev.db" > env
+echo 'DATABASE_URL="file:./dev.db"' > .env
 ```
 
-if you wanna use another database, you can change the DATABASE_URL to your own database URL.
+if you wanna use another database, you can change the `DATABASE_URL` to your own database URL.
 
 for example MySQL: `mysql://USER:PASSWORD@HOST:PORT/DATABASE`
 more details: [Prisma](https://www.prisma.io/docs/concepts/database-connectors/mysql#configuring-an-ssl-connection)
